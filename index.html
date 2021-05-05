@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery | Formulario</title>
+    <link rel="stylesheet" href="assets/css/stylesheet.css">
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <div id="cajaFormulario">
+            <h1>Contacto</h1>
+            <div id="cajaDatos">
+                <div class="box-column">
+                    <label for="">Nombre</label>
+                    <input type="text" id="name">
+                </div>
+
+                <div class="box-column">
+                    <label for="">Apellido</label>
+                    <input type="text" id="lastName">
+                </div>
+
+                <div class="box-column">
+                    <label for="">Email</label>
+                    <input type="email" id="email">
+                </div>
+
+                <div class="box-column">
+                    <label for="">Teléfono</label>
+                    <input type="number" id="phone">
+                </div>
+
+                <div class="box-column">
+                    <label for="">Departamento a contactar</label>
+                    <select name="" id="department">
+                        <option value="0">Selecciona una opción</option>
+                        <option value="1">Cobros</option>
+                        <option value="2">RH</option>
+                        <option value="3">Servicio al cliente</option>
+                    </select>
+                </div>
+
+                <div class="box-column">
+                    <label for="">Mensaje</label>
+                    <textarea name="" id="msg" cols="40" rows="8" placeholder="Escribe tu mensaje aquí"></textarea>
+                </div>
+
+                <div class="box-row">
+                    <label for="">Acepto los términos y condiciones</label>
+                    <input type="checkbox" id="accept" class="checkBox">
+                </div>
+
+                <button type="submit" id="btnSubmit" class="button">Enviar</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

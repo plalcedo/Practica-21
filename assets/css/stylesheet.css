@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Oxygen:wght@300&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Oxygen', sans-serif;
+}
+
+h1 {
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    padding: 10px;
+}
+
+textarea {
+    resize: none;
+}
+
+label {
+    margin-bottom: 3px;
+}
+
+.wrapper {
+    width: 100vw;
+    height: 100vh;
+    background-color: #ccc5b9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    padding: 5px;
+}
+
+.box-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    padding: 5px;
+}
+
+.checkBox {
+    margin-left: 10px;
+}
+
+.button {
+    background-color: #eb5e28;
+    border: transparent;
+    border-radius: 10px;
+    padding: 10px 20px;
+    color: white;
+    margin: 10px 0px;
+}
+
+.button:hover {
+    background-color: #eb4908;
+}
+
+#cajaFormulario {
+    width: 40%;
+    height: auto;
+    background-color: #fffcf2;
+    border: 2px solid #252422;
+    border-radius: 15px;
+    align-items: center;
+}
+
+#cajaDatos {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Quitar flechas en el input number */
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
