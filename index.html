@@ -11,54 +11,83 @@
 
 <body>
 
-    <div class="wrapper">
+    <div class="wrapper justify-center" id="wrapper">
         <div id="cajaFormulario">
             <h1>Contacto</h1>
             <div id="cajaDatos">
-                <div class="box-column">
-                    <label for="">Nombre</label>
-                    <input type="text" id="name">
-                </div>
+                <form action="">
+                    <div class="box-column">
+                        <label for="">Nombre</label>
+                        <input type="text" id="name" name="name" value="Pedro Luis">
+                    </div>
 
-                <div class="box-column">
-                    <label for="">Apellido</label>
-                    <input type="text" id="lastName">
-                </div>
+                    <div class="box-column">
+                        <label for="">Apellido</label>
+                        <input type="text" id="lastName" name="lastName" value="Alcedo">
+                    </div>
 
-                <div class="box-column">
-                    <label for="">Email</label>
-                    <input type="email" id="email">
-                </div>
+                    <div class="box-column">
+                        <label for="">Email</label>
+                        <input type="email" id="email" name="email" value="plalcedo@gmail.com">
+                    </div>
 
-                <div class="box-column">
-                    <label for="">Teléfono</label>
-                    <input type="number" id="phone">
-                </div>
+                    <div class="box-column">
+                        <label for="">Teléfono</label>
+                        <input type="number" id="phone" name="phone" value="8116128896">
+                    </div>
 
-                <div class="box-column">
-                    <label for="">Departamento a contactar</label>
-                    <select name="" id="department">
-                        <option value="0">Selecciona una opción</option>
-                        <option value="1">Cobros</option>
-                        <option value="2">RH</option>
-                        <option value="3">Servicio al cliente</option>
-                    </select>
-                </div>
+                    <div class="box-column">
+                        <label for="">Departamento a contactar</label>
+                        <select name="department" id="department">
+                            <option value="0">Selecciona una opción</option>
+                            <option value="Cobros" selected>Cobros</option>
+                            <option value="RH">RH</option>
+                            <option value="Servicio al cliente">Servicio al cliente</option>
+                        </select>
+                    </div>
 
-                <div class="box-column">
-                    <label for="">Mensaje</label>
-                    <textarea name="" id="msg" cols="40" rows="8" placeholder="Escribe tu mensaje aquí"></textarea>
-                </div>
+                    <div class="box-column">
+                        <label for="">Mensaje</label>
+                        <textarea name="msg" id="msg" cols="40" rows="8" placeholder="Escribe tu mensaje aquí">Hola</textarea>
+                    </div>
 
-                <div class="box-row">
-                    <label for="">Acepto los términos y condiciones</label>
-                    <input type="checkbox" id="accept" class="checkBox">
-                </div>
+                    <div class="box-row">
+                        <label for="">Acepto los términos y condiciones</label>
+                        <input type="checkbox" id="chkAccept" class="checkBox" name="accept" checked>
+                    </div>
 
-                <button type="submit" id="btnSubmit" class="button">Enviar</button>
+                    <div id="boxButton">
+                        <button type="submit" id="btnSubmit" class="button">Enviar</button>
+                    </div>
+                </form>
             </div>
         </div>
+
+        <div id="mensajes">
+            <div id="cajaMensajes">
+                <h1 id="titleMensajes">Mensajes recibidos</h1>
+            </div>
+            <div id="iconsMensajes">
+                <button id="btnCobros" class="btnRound"><i class="fas fa-dollar-sign"></i></button>
+                <button id="btnRH" class="btnRound"><i class="fas fa-users"></i></button>
+                <button id="btnService" class="btnRound"><i class="fas fa-user"></i></button>
+                <button id="btnAll" class="btnRound"><i class="fas fa-border-all"></i></button>
+            </div>
+        </div>
+
+        <div id="secciones">
+            <button id="btnContacto" class="btnRound"><i class="fas fa-envelope"></i></button>
+            <button id="btnMensajes" class="btnRound"><i class=" fas fa-comments "></i></button>
+            <div id="notificacionError">¡Debes aceptar los términos y condiciones!</div>
+            <div id="notificacionMsjEnviado">¡Tu mensaje fue enviado!</div>
+        </div>
+
+
     </div>
+
+    <script src="https://kit.fontawesome.com/bd4bac141d.js " crossorigin="anonymous "></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js "></script>
+    <script src="assets/js/app.js "></script>
 
 </body>
 

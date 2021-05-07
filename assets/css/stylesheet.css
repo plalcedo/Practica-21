@@ -25,8 +25,9 @@ label {
     height: 100vh;
     background-color: #ccc5b9;
     display: flex;
-    justify-content: center;
     align-items: center;
+    flex-direction: column;
+    overflow-y: scroll;
 }
 
 .box-column {
@@ -60,8 +61,30 @@ label {
     background-color: #eb4908;
 }
 
+.btnRound {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: transparent;
+    color: #eb5e28;
+}
+
+.btnRound:hover {
+    background-color: #eb5e28;
+    color: white;
+    transition: 0.5s;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.justify-baseline {
+    justify-content: baseline;
+}
+
 #cajaFormulario {
-    width: 40%;
+    width: 70%;
     height: auto;
     background-color: #fffcf2;
     border: 2px solid #252422;
@@ -75,6 +98,89 @@ label {
     width: 100%;
     justify-content: center;
     align-items: center;
+}
+
+#boxButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#btnContacto {
+    position: absolute;
+    left: 3%;
+    bottom: 3%;
+}
+
+#btnMensajes {
+    position: absolute;
+    right: 3%;
+    bottom: 3%;
+}
+
+#notificacionError,
+#notificacionMsjEnviado {
+    width: 400px;
+    height: 30px;
+    background-color: #eb5e28;
+    border-radius: 20px;
+    border: 2px white solid;
+    text-align: center;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 90%;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+#btnCobros {
+    position: absolute;
+    top: 3%;
+    left: 3%
+}
+
+#btnRH {
+    position: absolute;
+    top: 9%;
+    left: 3%
+}
+
+#btnService {
+    position: absolute;
+    top: 15%;
+    left: 3%
+}
+
+#btnAll {
+    position: absolute;
+    top: 21%;
+    left: 3%;
+}
+
+.cajaMensaje {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 10px;
+    border-radius: 20px;
+    margin: 5px 0px;
+}
+
+.bordeCobros {
+    border: 2px red solid;
+}
+
+.bordeRH {
+    border: 2px blue solid;
+}
+
+.bordeServicioAlCliente {
+    border: 2px green solid;
 }
 
 
