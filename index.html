@@ -19,22 +19,30 @@
                     <div class="box-column">
                         <label for="">Nombre</label>
                         <input type="text" id="name" name="name" value="Pedro Luis">
+                        <p class="textInfo" id="nameInfoText">No se aceptan números o caracteres especiales</p>
                     </div>
 
                     <div class="box-column">
                         <label for="">Apellido</label>
                         <input type="text" id="lastName" name="lastName" value="Alcedo">
+                        <p class="textInfo" id="lastNameInfoText">No se aceptan números o caracteres especiales</p>
+
                     </div>
+
 
                     <div class="box-column">
                         <label for="">Email</label>
                         <input type="email" id="email" name="email" value="plalcedo@gmail.com">
+                        <p class="textInfo" id="emailInfoText">No coincide con un email válido</p>
                     </div>
+
 
                     <div class="box-column">
                         <label for="">Teléfono</label>
                         <input type="number" id="phone" name="phone" value="8116128896">
+                        <p class="textInfo" id="phoneInfoText">No puede estar vacío y no acepta caracteres especiales</p>
                     </div>
+
 
                     <div class="box-column">
                         <label for="">Departamento a contactar</label>
@@ -78,8 +86,7 @@
         <div id="secciones">
             <button id="btnContacto" class="btnRound"><i class="fas fa-envelope"></i></button>
             <button id="btnMensajes" class="btnRound"><i class=" fas fa-comments "></i></button>
-            <div id="notificacionError">¡Debes aceptar los términos y condiciones!</div>
-            <div id="notificacionMsjEnviado">¡Tu mensaje fue enviado!</div>
+            <div id="notificacion" class="notificaciones"></div>
         </div>
 
 

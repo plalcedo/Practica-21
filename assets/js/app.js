@@ -24,9 +24,7 @@ $("#chkAccept").click(() => {
 $("#mensajes").hide();
 
 // Ocultamos las notificaciones
-$("#notificacionError").hide();
-$("#notificacionMsjEnviado").hide();
-
+$("#notificacion").hide();
 
 // Botones para habilitar cada sección
 $("#btnContacto").click(() => {
@@ -48,59 +46,112 @@ $("#btnMensajes").click(() => {
 });
 
 // Envío del mensaje
+
+// Variables de verificación
+
+var nameCorrect = false;
+var lastNameCorrect = false;
+var emailCorrect = false;
+var phoneCorrect = false;
+
 $("form").on("submit", (event) => {
     event.preventDefault();
+
+    // Validación del Check Box
     if ($("#chkAccept").is(":checked")) {
-        var data = $("form").serializeArray();
-        console.log(data);
-        $("#notificacionMsjEnviado").fadeIn();
-        setTimeout(() => {
-            $("#notificacionMsjEnviado").fadeOut();
-        }, 2000);
 
-        // Hacemos referencia al div de mensajes
-        var cajaMensajes = document.getElementById("cajaMensajes");
+        // Validación de campos
+        if (nameCorrect == true && lastNameCorrect == true && emailCorrect == true && phoneCorrect == true) {
 
-        // Creamos elementos de la tarjeta del mensaje
-        var div = document.createElement("div");
-        var nombre = document.createElement("p");
-        var apellido = document.createElement("p");
-        var email = document.createElement("p");
-        var telefono = document.createElement("p");
-        var departamento = document.createElement("p");
-        var mensaje = document.createElement("p");
+            // Validación mensaje
+            if ($("#msg").val().length > 0) {
+                var data = $("form").serializeArray();
+                console.log(data);
 
-        // Agregamos la información
-        nombre.innerHTML = "Nombre: " + data[0].value;
-        apellido.innerHTML = "Apellido: " + data[1].value;
-        email.innerHTML = "Email: " + data[2].value;
-        telefono.innerHTML = "Teléfono: " + data[3].value;
-        departamento.innerHTML = "Departamento dirigido: " + data[4].value;
-        mensaje.innerHTML = "Mensaje: " + data[5].value;
+                // Validación de departamento
+                if (data[4].value == "0") {
+                    $("#notificacion").text("¡Debes elegir un departamento!");
+                    $("#notificacion").fadeIn();
+                    setTimeout(() => {
+                        $("#notificacion").fadeOut();
+                    }, 2000);
+                } else {
+                    $("#notificacion").text("¡Mensaje enviado!");
+                    $("#notificacion").fadeIn();
+                    setTimeout(() => {
+                        $("#notificacion").fadeOut();
+                    }, 2000);
 
-        // Juntamos la tarjeta
-        div.appendChild(nombre);
-        div.appendChild(apellido);
-        div.appendChild(email);
-        div.appendChild(telefono);
-        div.appendChild(departamento);
-        div.appendChild(mensaje);
+                    // Hacemos referencia al div de mensajes
+                    var cajaMensajes = document.getElementById("cajaMensajes");
 
-        // Agregamos clases
-        div.classList.add("cajaMensaje");
+                    // Creamos elementos de la tarjeta del mensaje
+                    var divPadre = document.createElement("div");
+                    var divHijo = document.createElement("div");
+                    var nombre = document.createElement("p");
+                    var apellido = document.createElement("p");
+                    var email = document.createElement("p");
+                    var telefono = document.createElement("p");
+                    var departamento = document.createElement("p");
+                    var mensaje = document.createElement("p");
+                    var i = document.createElement("i");
 
-        // Definimos borde para la caja dependiendo del departamento
-        if (data[4].value == "Cobros") {
-            div.classList.add("bordeCobros");
-        } else if (data[4].value == "RH") {
-            div.classList.add("bordeRH");
-        } else if (data[4].value == "Servicio al cliente") {
-            div.classList.add("bordeServicioAlCliente");
+                    // Agregamos la información
+                    nombre.innerHTML = "Nombre: " + data[0].value;
+                    apellido.innerHTML = "Apellido: " + data[1].value;
+                    email.innerHTML = "Email: " + data[2].value;
+                    telefono.innerHTML = "Teléfono: " + data[3].value;
+                    departamento.innerHTML = "Departamento dirigido: " + data[4].value;
+                    mensaje.innerHTML = "Mensaje: " + data[5].value;
+                    i.classList.add("fas");
+                    i.classList.add("fa-trash");
+                    i.classList.add("btnTrash");
+
+                    // Juntamos la tarjeta
+                    divHijo.appendChild(nombre);
+                    divHijo.appendChild(apellido);
+                    divHijo.appendChild(email);
+                    divHijo.appendChild(telefono);
+                    divHijo.appendChild(departamento);
+                    divHijo.appendChild(mensaje);
+                    divPadre.appendChild(i);
+
+                    divPadre.appendChild(divHijo);
+
+                    // Agregamos clases
+                    divPadre.classList.add("cajaMensaje");
+                    divHijo.classList.add("infoMensaje");
+
+                    // Definimos borde para la caja dependiendo del departamento
+                    if (data[4].value == "Cobros") {
+                        divPadre.classList.add("bordeCobros");
+                    } else if (data[4].value == "RH") {
+                        divPadre.classList.add("bordeRH");
+                    } else if (data[4].value == "Servicio al cliente") {
+                        divPadre.classList.add("bordeServicioAlCliente");
+                    }
+
+                    // Juntamos la tarjeta a la sección de mensajes
+                    cajaMensajes.appendChild(divPadre);
+
+                }
+
+            } else {
+                $("#notificacion").text("¡El mensaje no puede estar vacío!");
+                $("#notificacion").fadeIn();
+                setTimeout(() => {
+                    $("#notificacion").fadeOut();
+                }, 2000);
+            }
+
+
+        } else {
+            $("#notificacion").text("¡Revisa los campos!");
+            $("#notificacion").fadeIn();
+            setTimeout(() => {
+                $("#notificacion").fadeOut();
+            }, 2000);
         }
-
-        // Juntamos la tarjeta a la sección de mensajes
-        cajaMensajes.appendChild(div);
-
 
         // Botones de filtrado
 
@@ -129,10 +180,149 @@ $("form").on("submit", (event) => {
         });
 
     } else {
-        $("#notificacionError").fadeIn();
+        $("#notificacion").text("¡Debes aceptar los términos y condiciones!");
+        $("#notificacion").fadeIn();
         setTimeout(() => {
-            $("#notificacionError").fadeOut();
+            $("#notificacion").fadeOut();
         }, 2000);
     }
 });
-// Verificamos si se aceptaron los términos y condiciones
+
+
+// Ocultamos información
+$("#nameInfoText").hide();
+$("#lastNameInfoText").hide();
+$("#emailInfoText").hide();
+$("#phoneInfoText").hide();
+
+
+// Validaciones de campos
+
+$("#name").blur(() => {
+    var estado = checkName();
+    console.log(estado);
+    if (estado) {
+        $("#nameInfoText").hide();
+        $("#name").removeClass("border-invalid");
+        $("#name").addClass("border-valid");
+        nameCorrect = true;
+    } else {
+        $("#name").removeClass("border-valid");
+        $("#name").addClass("border-invalid");
+        $("#nameInfoText").show();
+        nameCorrect = false;
+    }
+});
+
+$("#lastName").blur(() => {
+    var estado = checkLastName();
+    console.log(estado);
+    if (estado) {
+        $("#lastNameInfoText").hide();
+        $("#lastName").removeClass("border-invalid");
+        $("#lastName").addClass("border-valid");
+        lastNameCorrect = true;
+    } else {
+        $("#lastName").removeClass("border-valid");
+        $("#lastName").addClass("border-invalid");
+        $("#lastNameInfoText").show();
+        lastNameCorrect = false;
+    }
+});
+
+$("#email").blur(() => {
+    var estado = checkEmail();
+    console.log(estado);
+    if (estado) {
+        $("#emailInfoText").hide();
+        $("#email").removeClass("border-invalid");
+        $("#email").addClass("border-valid");
+        emailCorrect = true;
+    } else {
+        $("#email").removeClass("border-valid");
+        $("#email").addClass("border-invalid");
+        $("#emailInfoText").show();
+        emailCorrect = false;
+    }
+});
+
+$("#phone").blur(() => {
+    var estado = checkPhone();
+    console.log(estado);
+    if (estado) {
+        $("#phoneInfoText").hide();
+        $("#phone").removeClass("border-invalid");
+        $("#phone").addClass("border-valid");
+        phoneCorrect = true;
+    } else {
+        $("#phone").removeClass("border-valid");
+        $("#phone").addClass("border-invalid");
+        $("#phoneInfoText").show();
+        phoneCorrect = false;
+    }
+});
+
+
+function checkName() {
+    var pattern = /^[a-zA-Z ]*$/;
+    var inputName = $("#name").val();
+    var estado = true;
+
+    if (pattern.test(inputName) && inputName !== "") {
+        console.log("Nombre válido");
+        estado = true;
+    } else {
+        console.log("Nombre inválido");
+        estado = false;
+    }
+
+    return estado;
+}
+
+function checkLastName() {
+    var pattern = /^[a-zA-Z ]*$/;
+    var inputLastName = $("#lastName").val();
+    var estado = true;
+
+    if (pattern.test(inputLastName) && inputLastName !== "") {
+        console.log("Apellido válido");
+        estado = true;
+    } else {
+        console.log("Apellido inválido");
+        estado = false;
+    }
+
+    return estado;
+}
+
+function checkEmail() {
+    var pattern = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6})*$/;
+    var inputEmail = $("#email").val();
+    var estado = true;
+
+    if (pattern.test(inputEmail) && inputEmail !== "") {
+        console.log("Email válido");
+        estado = true;
+    } else {
+        console.log("Email inválido");
+        estado = false;
+    }
+
+    return estado;
+}
+
+function checkPhone() {
+    var pattern = /^[0-9]*$/;
+    var inputPhone = $("#phone").val();
+    var estado = true;
+
+    if (pattern.test(inputPhone) && inputPhone !== "") {
+        console.log("Teléfono válido");
+        estado = true;
+    } else {
+        console.log("Teléfono inválido");
+        estado = false;
+    }
+
+    return estado;
+}
