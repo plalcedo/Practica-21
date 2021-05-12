@@ -153,10 +153,31 @@ label {
     margin: auto;
 }
 
-.btnTrash {
+.btnTrashCobros {
     position: relative;
-    right: 0px;
-    top: 0px;
+    left: 90%;
+}
+
+.btnTrashCobros:hover {
+    color: red;
+}
+
+.btnTrashRH {
+    position: relative;
+    left: 90%;
+}
+
+.btnTrashRH:hover {
+    color: blue;
+}
+
+.btnTrashService {
+    position: relative;
+    left: 90%;
+}
+
+.btnTrashService:hover {
+    color: green;
 }
 
 #btnCobros {
@@ -189,12 +210,6 @@ label {
     padding: 10px;
     border-radius: 20px;
     margin: 5px 0px;
-}
-
-.cajaMensaje i {
-    position: relative;
-    right: 0px;
-    top: 0px;
 }
 
 .infoMensaje {

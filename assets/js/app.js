@@ -103,9 +103,7 @@ $("form").on("submit", (event) => {
                     telefono.innerHTML = "Teléfono: " + data[3].value;
                     departamento.innerHTML = "Departamento dirigido: " + data[4].value;
                     mensaje.innerHTML = "Mensaje: " + data[5].value;
-                    i.classList.add("fas");
-                    i.classList.add("fa-trash");
-                    i.classList.add("btnTrash");
+
 
                     // Juntamos la tarjeta
                     divHijo.appendChild(nombre);
@@ -125,9 +123,18 @@ $("form").on("submit", (event) => {
                     // Definimos borde para la caja dependiendo del departamento
                     if (data[4].value == "Cobros") {
                         divPadre.classList.add("bordeCobros");
+                        i.classList.add("fas");
+                        i.classList.add("fa-trash");
+                        i.classList.add("btnTrashCobros");
                     } else if (data[4].value == "RH") {
                         divPadre.classList.add("bordeRH");
+                        i.classList.add("fas");
+                        i.classList.add("fa-trash");
+                        i.classList.add("btnTrashRH");
                     } else if (data[4].value == "Servicio al cliente") {
+                        i.classList.add("fas");
+                        i.classList.add("fa-trash");
+                        i.classList.add("btnTrashService");
                         divPadre.classList.add("bordeServicioAlCliente");
                     }
 
@@ -177,6 +184,11 @@ $("form").on("submit", (event) => {
             $(".bordeCobros").show();
             $(".bordeRH").show();
             $(".bordeServicioAlCliente").show();
+        });
+
+        // Botones eliminar mensaje
+        $(".btnTrashCobros").click(() => {
+            console.log("Prueba");
         });
 
     } else {
